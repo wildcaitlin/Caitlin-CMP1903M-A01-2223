@@ -37,8 +37,12 @@ namespace CMP1903M_A01_2223
             }
             Console.WriteLine("Pack created!");
 
-        } 
-        
+        }
+
+        public List<Card> NameCard()
+        {
+            return pack;
+        }
 
         public static bool shuffleCardPack(int typeOfShuffle)
         {
@@ -62,7 +66,7 @@ namespace CMP1903M_A01_2223
                 Console.WriteLine("Riffle Shuffle");
                 List<Card> list1 = new List<Card>();
                 List<Card> list2 = new List<Card>();
-                for (int i = 0; (i < 52); i++) // 2 separate piles
+                for (int i = 0; (i < pack.Count); i++) // 2 separate piles
                 {
                     if (i < 26)
                     {
@@ -74,10 +78,14 @@ namespace CMP1903M_A01_2223
                     }
                 }
                 pack.Clear(); // Alternate adding the cards back to the pack like riffle shuffle
-                for (int i = 0; (i < 26); i++)
+                for (int i = 0; (i < list1.Count); i++)
                 {
                     pack.Add(list1[i]);
-                    pack.Add(list2[i]);
+                    if (i < list2.Count)
+                    {
+                        pack.Add(list2[i]);
+                    }
+                    
                 }
 
                     return true;
@@ -87,7 +95,7 @@ namespace CMP1903M_A01_2223
                 Console.WriteLine("No shuffle");
                 return true;
             }
-            Console.WriteLine("Invalid input");
+            Console.WriteLine("Invalid input (1-3)");
             return false; // Makes program ask for another input if its not an option
         }
 
@@ -97,7 +105,7 @@ namespace CMP1903M_A01_2223
             //Deals one card
             Card dealt = pack[0];
             pack.RemoveAt(0);
-            Console.WriteLine("Dealt: (V S) " + dealt.Value +" "+ dealt.Suit);
+            Console.WriteLine("Dealt: " + dealt.NameCard());
             Console.WriteLine("Dealt 1 card!");
             return dealt;
            
@@ -111,7 +119,7 @@ namespace CMP1903M_A01_2223
             for (int i = 0; i < amount; i++) {
                 dealt.Add(pack[0]);
                 pack.RemoveAt(0);
-                Console.WriteLine("Dealt: (V S) " + dealt[i].Value + " " + dealt[i].Suit);
+                Console.WriteLine("Dealt: " + dealt[i].NameCard());
             }
 
             Console.WriteLine("Dealt " + amount + " cards!");
