@@ -14,7 +14,7 @@ namespace CMP1903M_A01_2223
             new Pack(); // Creates deck
             bool exit = false;
 
-            while (!exit)
+            while (!exit) // Makes the program loop until the user exits it
             {
                 bool valid = false;
                 Console.WriteLine("\n1: Shuffle\n2: Draw\n3: Exit");
@@ -23,7 +23,7 @@ namespace CMP1903M_A01_2223
 
                 switch (command)
                 {
-                    case "1":
+                    case "1": // Does given shuffle type to deck
                         while (!valid)
                         {
                             Console.WriteLine("\n1: Fisher-Yates Shuffle\n2: Riffle Shuffle\n3: No shuffle");
@@ -43,7 +43,7 @@ namespace CMP1903M_A01_2223
                         };
                         break;
 
-                    case "2":
+                    case "2": // Checks if deck is empty (can't draw) and draws given number of cards
                         if (Pack.pack.Count == 0) {
                             Console.WriteLine("\nDeck is empty.");
                             break;
@@ -73,9 +73,9 @@ namespace CMP1903M_A01_2223
                         {
                             Pack.dealCard(cards);
                         }
-                    break;
+                    break; 
 
-                        case "3":
+                        case "3": // Exits program
                         Console.WriteLine("Exiting program.");
                         return;
 

@@ -12,10 +12,36 @@ namespace CMP1903M_A01_2223
         //Value: numbers 1 - 13
         //Suit: numbers 1 - 4
         //The 'set' methods for these properties could have some validation
-        public int Value { get; set; }
-        public int Suit { get; set; }
 
-        public string NameCard()
+        private int _Value;
+        public int Value
+        {
+
+            get { return _Value; }
+            set
+            {
+
+                if ((value >= 1) && (value <= 13)) // Makes sure Value is between 1 and 13
+                {
+                    _Value = value;
+                }
+
+            }
+        }
+
+        private int _Suit;
+        public int Suit {
+            get { return _Suit; }
+            set
+            {
+                if ((value >= 1) && (value <= 4)) // Makes sure Suit is between 1 and 4
+                {
+                    _Suit = value;
+                }
+            }
+        }
+
+        public string NameCard() // This assigns proper names to cards to make it more user friendly when cards are displayed
         {
             string valuename;
             switch (Value)
